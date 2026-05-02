@@ -302,7 +302,7 @@ publishing {
             from(components["java"])
             artifactId = "server"
             pom {
-                url.set("https://github.com/PowerNukkitX/PowerNukkitX")
+                url.set("https://github.com/erilanetwork/PowerNukkitX-EN")
                 licenses {
                     license {
                         name.set("MIT License")
@@ -310,9 +310,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git:git://github.com/PowerNukkitX/PowerNukkitX.git")
-                    developerConnection.set("scm:git:ssh://github.com/PowerNukkitX/PowerNukkitX.git")
-                    url.set("https://github.com/PowerNukkitX/PowerNukkitX")
+                    connection.set("scm:git:git://github.com/erilanetwork/PowerNukkitX-EN.git")
+                    developerConnection.set("scm:git:ssh://github.com/erilanetwork/PowerNukkitX-EN.git")
+                    url.set("https://github.com/erilanetwork/PowerNukkitX-EN")
                 }
             }
         }
