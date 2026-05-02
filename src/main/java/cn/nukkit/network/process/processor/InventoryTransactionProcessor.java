@@ -40,12 +40,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 @Slf4j
 public class InventoryTransactionProcessor extends DataPacketProcessor<InventoryTransactionPacket> {
-    private final java.util.Map<Long, Integer> lastEntityInteractTick = new java.util.HashMap<>();
+    private final Map<Long, Integer> lastEntityInteractTick = new HashMap<>();
 
     @Override
     public void handle(@NotNull PlayerHandle playerHandle, @NotNull InventoryTransactionPacket pk) {
@@ -376,7 +377,20 @@ public class InventoryTransactionProcessor extends DataPacketProcessor<Inventory
                 PlayerInteractEvent interactEvent = new PlayerInteractEvent(player, item.clone(), directionVector, face, PlayerInteractEvent.Action.RIGHT_CLICK_AIR);
                 player.getServer().getPluginManager().callEvent(interactEvent);
                 playerHandle.setInteract();
-                if (interactEvent.isCancelled()) {
+
+                boolean bypassInteractCancel = false;
+                if (item.isEdible() || item.isConsumable()) {
+                    PlayerFoodEatEvent foodEatEvent = new PlayerFoodEatEvent(player, item.clone());
+                    player.getServer().getPluginManager().callEvent(foodEatEvent);
+                    if (interactEvent.isCancelled() && !foodEatEvent.isCancelled()) {
+                        bypassInteractCancel = true;
+                    } else if (foodEatEvent.isCancelled()) {
+                        player.getInventory().sendSlot(useItemData.hotbarSlot, player);
+                        return;
+                    }
+                }
+
+                if (interactEvent.isCancelled() && !bypassInteractCancel) {
                     if (interactEvent.getItem() != null && interactEvent.getItem().isArmor()) {
                         player.getInventory().sendArmorContents(player);
                     }
