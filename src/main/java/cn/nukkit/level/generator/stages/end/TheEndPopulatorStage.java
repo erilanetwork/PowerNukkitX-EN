@@ -16,12 +16,7 @@ public class TheEndPopulatorStage extends PopulatorStage {
 
     public static final ObjectArraySet<String> POPULATORS = new ObjectArraySet<>(new String[] {
             ObsidianPillarPopulator.NAME,
-            EnderDragonPopulator.NAME,
-            ExitPortalPopulator.NAME,
             ChorusFlowerPopulator.NAME,
-            EndCityPopulator.NAME,
-            EndGatewayPopulator.NAME,
-            EndIslandPopulator.NAME
     });
 
     @Override

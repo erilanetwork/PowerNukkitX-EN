@@ -27,8 +27,6 @@ public class NetherPopulatorStage extends PopulatorStage {
             FirePopulator.NAME,
             LavaPopulator.NAME,
             NetherGoldOrePopulator.NAME,
-            AncientDebrisSmallPopulator.NAME,
-            AncientDebrisLargePopulator.NAME,
             NetherQuartzPopulator.NAME,
             BasaltDeltaLavaPopulator.NAME,
             BasaltDeltaPillarPopulator.NAME,
@@ -41,9 +39,6 @@ public class NetherPopulatorStage extends PopulatorStage {
             WarpedTwistingVinesPopulator.NAME,
             NetherBlackstonePopulator.NAME,
             NetherGravelPopulator.NAME,
-            BastionRemnantPopulator.NAME,
-            NetherFortressPopulator.NAME,
-            PopulatorRuinedPortal.NAME,
             NetherFossilPopulator.NAME
     });
 

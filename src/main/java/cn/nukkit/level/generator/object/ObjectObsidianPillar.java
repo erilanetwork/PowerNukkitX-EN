@@ -76,23 +76,6 @@ public class ObjectObsidianPillar extends ObjectGenerator {
 
         level.setBlockStateAt(x, height, z, BlockBedrock.PROPERTIES.getBlockState(INFINIBURN_BIT.createValue(true)));
         level.setBlockStateAt(x, height + 1, z, BlockFire.PROPERTIES.getDefaultState());
-        level.addHook(() -> {
-            CompoundTag nbt = new CompoundTag()
-                    .putList("Pos", new ListTag<DoubleTag>()
-                            .add(new DoubleTag(x + 0.5))
-                            .add(new DoubleTag(height + 1))
-                            .add(new DoubleTag(z + 0.5)))
-                    .putList("Motion", new ListTag<DoubleTag>()
-                            .add(new DoubleTag(0))
-                            .add(new DoubleTag(0))
-                            .add(new DoubleTag(0)))
-                    .putList("Rotation", new ListTag<FloatTag>()
-                            .add(new FloatTag(new Random().nextFloat() * 360))
-                            .add(new FloatTag(0)));
-            
-            Entity entity = Entity.createEntity(Entity.ENDER_CRYSTAL, level.getChunk(position.getChunkX(), position.getChunkZ()), nbt);
-            entity.spawnToAll();
-        });
         return true;
     }
 }
