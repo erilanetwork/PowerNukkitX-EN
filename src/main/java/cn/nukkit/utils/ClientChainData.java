@@ -209,8 +209,8 @@ public final class ClientChainData implements LoginChainData {
         if (skinToken.has("DefaultInputMode")) this.defaultInputMode = skinToken.get("DefaultInputMode").getAsInt();
         if (skinToken.has("UIProfile")) this.UIProfile = skinToken.get("UIProfile").getAsInt();
         if (skinToken.has("CapeData")) this.capeData = skinToken.get("CapeData").getAsString();
-        if (skinToken.has("Waterdog_IP")) this.waterdogIP = skinToken.get("Waterdog_IP").getAsString();
-        if (skinToken.has("Waterdog_XUID")) this.waterdogXUID = skinToken.get("Waterdog_XUID").getAsString();
+        if (skinToken.has("Erila_IP")) this.waterdogIP = skinToken.get("Erila_IP").getAsString();
+        if (skinToken.has("Erila_XUID")) this.waterdogXUID = skinToken.get("Erila_XUID").getAsString();
         if (skinToken.has("MaxViewDistance")) this.maxViewDistance = skinToken.get("MaxViewDistance").getAsInt();
         if (skinToken.has("MemoryTier")) this.memoryTier = skinToken.get("MemoryTier").getAsInt();
         if (skinToken.has("PartyId")) this.partyId = skinToken.get("PartyId").getAsString();
