@@ -4059,7 +4059,7 @@ public class Level implements Metadatable {
                         if (player.isConnected()) {
                             NetworkChunkPublisherUpdatePacket ncp = new NetworkChunkPublisherUpdatePacket();
                             ncp.position = player.asBlockVector3();
-                            ncp.radius = player.getViewDistance() << 4;
+                            ncp.radius = NukkitMath.ceilDouble((player.getViewDistance() + 1) * Math.sqrt(2)) << 4;
                             player.dataPacket(ncp);
 
                             LevelChunkPacket pk = new LevelChunkPacket();

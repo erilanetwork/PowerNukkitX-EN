@@ -7,6 +7,7 @@ import cn.nukkit.event.player.PlayerChunkRequestEvent;
 import cn.nukkit.event.player.PlayerPreChunkRequestEvent;
 import cn.nukkit.level.format.IChunk;
 import cn.nukkit.math.BlockVector3;
+import cn.nukkit.math.NukkitMath;
 import cn.nukkit.network.protocol.NetworkChunkPublisherUpdatePacket;
 import com.google.common.collect.Sets;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
@@ -245,7 +246,7 @@ public final class PlayerChunkManager {
         if (!chunkReadyToSend.isEmpty()) {
             NetworkChunkPublisherUpdatePacket ncp = new NetworkChunkPublisherUpdatePacket();
             ncp.position = player.asBlockVector3();
-            ncp.radius = player.getViewDistance() << 4;
+            ncp.radius = NukkitMath.ceilDouble((player.getViewDistance() + 1) * Math.sqrt(2)) << 4;
             player.dataPacket(ncp);
             while (!chunkReadyToSend.isEmpty()) {
                 long chunkHash = chunkReadyToSend.dequeueLong();

@@ -11,6 +11,7 @@ import cn.nukkit.event.entity.ItemDespawnEvent;
 import cn.nukkit.event.entity.ItemSpawnEvent;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.format.IChunk;
+import cn.nukkit.math.BlockFace;
 import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.network.protocol.AddItemEntityPacket;
@@ -22,6 +23,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 import java.util.Set;
+import cn.nukkit.blockentity.BlockEntityPistonArm;
+import cn.nukkit.math.Vector3;
 
 /**
  * @author MagicDroidX
@@ -407,6 +410,20 @@ public class EntityItem extends Entity {
         addEntity.entityData = this.entityDataMap;
         addEntity.item = this.getItem();
         return addEntity;
+    }
+
+    @Override
+    public void onPushByPiston(BlockEntityPistonArm piston, BlockFace moveDirection) {
+        if (this.isDisplayOnly()) {
+            return;
+        }
+        double mx = moveDirection.getXOffset() * 0.3;
+        double my = moveDirection.getYOffset() * 0.3;
+        double mz = moveDirection.getZOffset() * 0.3;
+        if (moveDirection.getAxis().isHorizontal()) {
+            my += 0.15;
+        }
+        this.setMotion(new Vector3(mx, my, mz));
     }
 
     @Override

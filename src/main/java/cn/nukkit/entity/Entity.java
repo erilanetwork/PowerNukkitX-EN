@@ -4649,7 +4649,7 @@ public abstract class Entity extends Location implements Metadatable, EntityID, 
     }
 
 
-    public void onPushByPiston(BlockEntityPistonArm piston) {
+    public void onPushByPiston(BlockEntityPistonArm piston, BlockFace moveDirection) {
 
     }
 

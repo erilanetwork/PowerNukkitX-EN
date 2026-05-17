@@ -224,7 +224,7 @@ public class EntityPainting extends EntityHanging {
     }
 
     @Override
-    public void onPushByPiston(BlockEntityPistonArm piston) {
+    public void onPushByPiston(BlockEntityPistonArm piston, cn.nukkit.math.BlockFace moveDirection) {
         if (this.level.getGameRules().getBoolean(GameRule.DO_ENTITY_DROPS)) {
             this.level.dropItem(this, new ItemPainting());
         }

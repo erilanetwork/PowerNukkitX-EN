@@ -86,7 +86,7 @@ public class BlockEntityPistonArm extends BlockEntitySpawnable {
         this.level.getServer().getPluginManager().callEvent(event);
         if (event.isCancelled())
             return;
-        entity.onPushByPiston(this);
+        entity.onPushByPiston(this, moveDirection);
         if (entity.closed)
             return;
         // Need to counteract gravity
